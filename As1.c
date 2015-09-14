@@ -12,7 +12,7 @@ int main(){
 	if (pid1 < 0)
 		printf("Fork 1 isn't working!\n");
 	else {
-		printf("n (n-2))) binomial computations of integers n = 2, 3, 10			, start now!\n");
+		printf("n (n-2))) binomial computations of integers n = 2, 3, 10, start now!\n");
 	}
 
 
