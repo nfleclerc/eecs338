@@ -93,14 +93,18 @@ void process_4_stuff()
 void parent_stuff(pid_t pid)
 {
        	//parent process
+	/*
 	int count;
 	for (count = 1; count <= NUM_FORKS; count++){
 		pid = wait(&status);				
-		printf("Process %i exited with status %i", pid, WEXITSTATUS(status));
+		printf("Process %i exited with status %i\n", pid, WEXITSTATUS(status));
 	}
-	//fetchIDs();
-	//kill(getpid());
-	//exit(EXIT_SUCCESS);
+	fetch_IDs();
+	kill(getpid());
+	exit(EXIT_SUCCESS);
+	*/
+	wait(NULL);
+	exit(EXIT_SUCCESS);
 }
 
 
@@ -116,7 +120,7 @@ int main()
 		pid = fork();
 
         	if (pid > 0) {
-			parent_stuff(pid);
+			//parent_stuff(pid);
 		} else if (pid == 0) {
             		switch (fork_count){
 				case 1:
@@ -146,6 +150,7 @@ int main()
         	}
     	}
 	
+	sleep(15);
     	printf("User ID: %i\n", cuserid());
 	printf("Process 1 End Time: %s", ctime(&end1));
 	printf("Process 1 Elapsed Time: %f\n", difftime(start1, end1));
