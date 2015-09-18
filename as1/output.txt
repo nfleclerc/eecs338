@@ -1,0 +1,48 @@
+
+PID 5408: (n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!
+PID 5408: User ID: 1000, Effec UID: 1000, Group ID: 1000, Effec GID: 1000
+PID 5409: The binomial coefficient of 2 is 1
+PID 5410: The binomial coefficient of 3 is 3
+PID 5409: The binomial coefficient of 4 is 6
+PID 5410: The binomial coefficient of 5 is 10
+PID 5409: The binomial coefficient of 6 is 15
+PID 5410: The binomial coefficient of 7 is 21
+PID 5409: The binomial coefficient of 8 is 28
+PID 5410: The binomial coefficient of 9 is 36
+PID 5409: The binomial coefficient of 10 is 45
+PID 5410: User ID: 1000, Effec UID: 1000, Group ID: 1000, Effec GID: 1000
+PID 5409: User ID: 1000, Effec UID: 1000, Group ID: 1000, Effec GID: 1000
+total 28
+-rwxrwxr-x 1 nathaniel nathaniel 13955 Sep 17 22:44 a.out
+-rw-rw-r-- 1 nathaniel nathaniel  5706 Sep 17 22:44 As1.c
+-rw-rw-r-- 1 nathaniel nathaniel   724 Sep 17 22:45 output.txt
+Process 1 exited with status: 0
+Process 2 exited with status: 0
+Process 3 exited with status: 0
+Process 4 exited with status: 0
+User ID: -1424227008
+
+Process 1 End Time: Thu May 13 18:53:53 4461627
+Process 1 Elapsed Time: -140733193388033.000000
+P1 User time: 0.000000
+P1 System time: 0.000000
+
+Process 2 End Time: Wed Dec 31 19:00:00 1969
+Process 2 Elapsed Time: 140195852435912.000000
+P2 User time: 0.000000
+P2 System time: 0.000000
+
+Process 3 End Time: Wed Dec 31 19:00:00 1969
+Process 3 Elapsed Time: 0.000000
+P3 User time: 0.000000
+P3 System time: 0.000000
+
+Process 4 End Time: Wed Dec 31 19:00:00 1969
+Process 4 Elapsed Time: 0.000000
+P4 User time: 0.000000
+P4 System time: 0.000000
+
+Parent Process End Time: Thu Sep 17 22:45:24 2015
+Parent Process Elapsed Time: 0.000000
+Parent User time: 0.000000
+Parent System time: 0.000000

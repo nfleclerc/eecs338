@@ -1,0 +1,6 @@
+1. The IDs provide a unique way of referencing the process, and the group IDs provide a way of referencing the group the process belong too; in case you want to an operation on a bunch of processes at once, you can use the group ids.
+Effective IDs are used to evaluate permissions for the process.
+
+2. They show zero time because the processes are running so fast, in nanoseconds, that they normally wouldn't be picked up upon, and sleeping a process doesn't actually add to its running time.
+
+Note: In my code, I include lengthy loops between the time statents and I still observe zero time values occasionally.
