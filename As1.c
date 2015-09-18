@@ -8,14 +8,15 @@
 #define LOOP_ITR 0x7fffffff
 
 int status;
+pid_t pid1, pid2, pid3, pid4;
 
 void fetch_IDs()
 {
 	int i;
 	printf("PID %i: User ID: %d, Effec UID: %d, Group ID: %d, Effec GID: %d\n", getpid(), getuid(), geteuid(), getgid(), getgid());
-	for (i = 0; i < LOOP_ITR; i++){}
 	fflush(stdout);
-    	exit(EXIT_SUCCESS);
+	for (i = 0; i < LOOP_ITR; i++){}
+    	//exit(EXIT_SUCCESS);
 }
 
 int binomial_coefficient_of(int n)
@@ -36,6 +37,7 @@ int binomial_coefficient_of(int n)
 void process_1_stuff()
 {
 	sleep(1);
+	pid1 = getpid();
 	printf("\nPID %i: (n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!\n", getpid());
 	fflush(stdout);
 	fetch_IDs();
@@ -46,6 +48,7 @@ void process_1_stuff()
 void process_2_stuff()
 {
 	sleep(2);
+	pid2 = getpid();
 	int i;
 	for (i = 2; i <= 10; i = i + 2)
 	{
@@ -61,6 +64,7 @@ void process_3_stuff()
 {
 	
 	sleep(3);
+	pid3 = getpid();
 	int i;
 	for (i = 3; i <= 9; i = i + 2)
 	{
@@ -77,6 +81,7 @@ void process_4_stuff()
 {
 
 	sleep(13);
+	pid4 = getpid();
 	char * args[3];
 	args[0] = "ls";
 	args[1] = "-l";
@@ -90,24 +95,6 @@ void process_4_stuff()
 	
 }
 
-void parent_stuff(pid_t pid)
-{
-       	//parent process
-	/*
-	int count;
-	for (count = 1; count <= NUM_FORKS; count++){
-		pid = wait(&status);				
-		printf("Process %i exited with status %i\n", pid, WEXITSTATUS(status));
-	}
-	fetch_IDs();
-	kill(getpid());
-	exit(EXIT_SUCCESS);
-	*/
-	wait(NULL);
-	exit(EXIT_SUCCESS);
-}
-
-
 int main()
 {
     	pid_t pid;
@@ -120,7 +107,8 @@ int main()
 		pid = fork();
 
         	if (pid > 0) {
-			//parent_stuff(pid);
+			//parent
+			
 		} else if (pid == 0) {
             		switch (fork_count){
 				case 1:
@@ -150,18 +138,29 @@ int main()
         	}
     	}
 	
-	sleep(15);
+	if (pid > 0){
+		wait(-1, &status, WNOHANG);
+		sleep(10);
+		printf("Process 1 exited with status: %i\n",  WEXITSTATUS(status));
+		printf("Process 2 exited with status: %i\n",  WEXITSTATUS(status));
+		printf("Process 3 exited with status: %i\n",  WEXITSTATUS(status));
+		printf("Process 4 exited with status: %i\n",  WEXITSTATUS(status));
+	}
+	
+	
+	sleep(4);
     	printf("User ID: %i\n", cuserid());
 	printf("Process 1 End Time: %s", ctime(&end1));
-	printf("Process 1 Elapsed Time: %f\n", difftime(start1, end1));
+	printf("Process 1 Elapsed Time: %f\n\n", difftime(start1, end1));
 	printf("Process 2 End Time: %s", ctime(&end2));
-	printf("Process 2 Elapsed Time: %f\n", difftime(start2, end2));
+	printf("Process 2 Elapsed Time: %f\n\n", difftime(start2, end2));
 	printf("Process 3 End Time: %s", ctime(&end3));
-	printf("Process 3 Elapsed Time: %f\n", difftime(start3, end3));
+	printf("Process 3 Elapsed Time: %f\n\n", difftime(start3, end3));
 	printf("Process 4 End Time: %s", ctime(&end4));
-	printf("Process 4 Elapsed Time: %f\n", difftime(start4, end4));
+	printf("Process 4 Elapsed Time: %f\n\n", difftime(start4, end4));
 	printf("Parent Process End Time: %s", ctime(&pend));
-	printf("Parent Process Elapsed Time: %f\n", difftime(pstart, pend));
+	printf("Parent Process Elapsed Time: %f\n\n", difftime(pstart, pend));
+	exit(EXIT_SUCCESS);
 	return(EXIT_SUCCESS);
 	
 }
