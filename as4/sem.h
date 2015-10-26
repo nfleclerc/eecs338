@@ -37,19 +37,4 @@ void semsignal(int semid, int semaphore){
     return;
 }
 
-void writeitem(int item)
-{
-    switch (item) {
-    	case TOBACCO:
-    	    printf("tobacco");
-    	    break;
-    	case MATCHES:
-    	    printf("matches");
-    	    break;
-    	case PAPER:
-    	    printf("paper");
-    	    break;
-    };
-    return;
-}
 
