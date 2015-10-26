@@ -1,13 +1,14 @@
-NAME := as4
+NAME := As4
 C_SRCS := $(wildcard *.c)
-OBJS := ${program_C_SRCS:.c=.o}
+OBJS := ${C_SRCS:.c=.o}
+CC := gcc
 
-.PHONY: all clean distclean
+.PHONY: clean distclean
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	gcc $(OBJS) -o $(NAME)
+	$(CC) -Wall $(C_SRCS) -o $(OBJS) -lm
 
 clean:
 	@- $(RM) $(OBJS)

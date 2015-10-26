@@ -22,7 +22,7 @@ struct node* create_list(int val)
 }
 
 struct node* add(int val){
-    struct test_struct *ptr = (struct node*)malloc(sizeof(struct node));
+    struct node *ptr = (struct node*)malloc(sizeof(struct node));
     ptr->val = val;
     ptr->next = NULL;
 
