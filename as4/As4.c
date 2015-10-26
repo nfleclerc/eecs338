@@ -1,12 +1,11 @@
 #include "As4.h"
-#include "list.h"
 #include <math.h>
 #include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/sem.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/wait.h>
+
 #define NUM_FORKS 15
 
 void withdraw(){

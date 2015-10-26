@@ -34,7 +34,7 @@ struct node* add(int val){
 
 
 
-void delete_from_list(int val){
+void delete_from_list(){
     struct node *del = NULL;
     del = head;
     head = del->next;
