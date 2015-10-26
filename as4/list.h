@@ -34,13 +34,17 @@ struct node* add(int val){
 
 
 
-void delete_from_list(){
+void deleteHead(){
     struct node *del = NULL;
     del = head;
     head = del->next;
     free(del);
     del = NULL;
     return;
+}
+
+int firstVal(){
+	return head->val;
 }
 
 

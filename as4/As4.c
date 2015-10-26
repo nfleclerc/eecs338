@@ -21,9 +21,11 @@ void spawn_process(int type){
 	switch(type){
 		case 0:
 			withdraw();
+			sleep(rand() % 15);
 			break;
 		case 1:
 			deposit();
+			sleep(rand() % 15);
 			break;
 	}
 
@@ -47,7 +49,6 @@ int main() {
 		} else if (pid == 0){
 
 			spawn_process(floor(rand() % 2));
-			sleep(rand() % 15);
 
 		} else {
 

@@ -14,7 +14,7 @@
 struct sharedvar {
 	int balance;
 	int wcount;
-	node *list = create_list(500);	
+	node *list;
 };
 
 void semwait(int semid, int semaphore){
