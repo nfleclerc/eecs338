@@ -11,8 +11,7 @@ struct node
 struct node *head = NULL;
 struct node *curr = NULL;
 
-struct node* create_list(int val)
-{
+struct node* create_list(int val){
     struct node *ptr = (struct node*)malloc(sizeof(struct node));
     ptr->val = val;
     ptr->next = NULL;
@@ -22,17 +21,19 @@ struct node* create_list(int val)
 }
 
 struct node* add(int val){
-    struct node *ptr = (struct node*)malloc(sizeof(struct node));
-    ptr->val = val;
-    ptr->next = NULL;
 
-    curr->next = ptr;
-    curr = ptr;
-    return ptr;
+	if(NULL == head){
+        	return (create_list(val));
+    	}
+
+    	struct node *ptr = (struct node*)malloc(sizeof(struct node));
+    	ptr->val = val;
+    	ptr->next = NULL;
+
+    	curr->next = ptr;
+    	curr = ptr;
+    	return ptr;
 }
-
-
-
 
 void deleteHead(){
     struct node *del = NULL;
