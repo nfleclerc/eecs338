@@ -19,7 +19,9 @@ union semun semctlarg;
 void withdraw(int withdrawal){
 	semwait(semid, MUTEX);
 	if (shared->wcount == 0 && shared->balance > withdrawal){
+		printf("%d: current balance before withdrawal: %d", getpid(), shared->balance);
 		shared->balance = shared->balance - withdrawal;
+		printf("%d: current balance after withdrawal: %d", getpid(), shared->balance);
 		semsignal(semid, MUTEX);
 	} else {
 		shared->wcount = shared->wcount + 1;
@@ -35,13 +37,15 @@ void withdraw(int withdrawal){
 			semsignal(semid, MUTEX);
 		}
 	}
-	printf("%d: withdrawing...\n", getpid());
+	printf("%d: withdrawal successful\n", getpid());
 	exit(EXIT_SUCCESS);
 }
 
 void deposit(int deposit){
 	semwait(semid, MUTEX);
+	printf("%d: current balance before deposit: %d", getpid(), shared->balance);
 	shared->balance = shared->balance + deposit;
+	printf("%d: current balance after deposit: %d", getpid(), shared->balance);
 	if (shared->wcount == 0){
 		semsignal(semid, MUTEX);
 	} else if (firstVal() > shared->balance){
@@ -49,7 +53,7 @@ void deposit(int deposit){
 	} else {
 		semsignal(semid, WLIST);
 	}
-	printf("%d: deposit successful...\n", getpid());
+	printf("%d: deposit successful\n", getpid());
 	exit(EXIT_SUCCESS);
 }
 
