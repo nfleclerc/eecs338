@@ -16,7 +16,7 @@
 struct sharedvar {
 	int balance;
 	int wcount;
-	int ary[];
+	int * ary;
 };
 
 union semun {

@@ -18,6 +18,7 @@ union semun semctlarg;
 
 void withdraw(int withdrawal){
 	printf("%d: Attempting to withdraw $%d.\n", getpid(), withdrawal);
+	sleep(1);
 	semwait(semid, MUTEX);
 	if (shared->wcount == 0 && shared->balance > withdrawal){
 		shared->balance = shared->balance - withdrawal;
@@ -26,14 +27,14 @@ void withdraw(int withdrawal){
 	} else {
 		shared->wcount = shared->wcount + 1;
 		printf("%d: Not enough funds, please deposit more. Waiting...\n", getpid());
-		add(withdrawal);
+		shared->ary = add(shared->ary, withdrawal);
 		semsignal(semid, MUTEX);
 		semwait(semid, WLIST);
-		shared->balance = shared->balance - firstVal();
-		deleteHead();
-		printf("%d: Enough funds now deposited. Withdrawal successful. Current balance after withdrawal: $%d.\n", getpid(), firstVal());
+		shared->balance = shared->balance - firstVal(shared->ary);
+		shared->ary = deleteHead(shared->ary);
+		printf("%d: Enough funds now deposited. Withdrawal successful. Current balance after withdrawal: $%d.\n", getpid(), firstVal(shared->ary));
 		shared->wcount = shared->wcount - 1;
-		if (shared->wcount > 1 && firstVal() < shared->balance){
+		if (shared->wcount > 1 && firstVal(shared->ary) < shared->balance){
 			semsignal(semid, WLIST);
 		} else {
 			semsignal(semid, MUTEX);
@@ -44,12 +45,13 @@ void withdraw(int withdrawal){
 
 void deposit(int deposit){
 	printf("%d: Attempting to deposit $%d.\n",getpid(), deposit);
+	sleep(1);
 	semwait(semid, MUTEX);
 	shared->balance = shared->balance + deposit;
 	printf("%d: Deposit Successful. Current balance after deposit: $%d.\n", getpid(), shared->balance);
 	if (shared->wcount == 0){
 		semsignal(semid, MUTEX);
-	} else if (firstVal() > shared->balance){
+	} else if (firstVal(shared->ary) > shared->balance){
 		semsignal(semid, MUTEX);
 	} else {
 		semsignal(semid, WLIST);
@@ -57,9 +59,7 @@ void deposit(int deposit){
 	exit(EXIT_SUCCESS);
 }
 
-void spawn_process(int type, int sleeptime){
-	
-	sleep(sleeptime);	
+void spawn_process(int type){
 
 	switch(type){
 		case 0:
@@ -88,6 +88,7 @@ int main() {
     	shared = (struct sharedvar *) shmat (shmid, 0, 0); 
     	shared->balance = 500;
     	shared->wcount = 0;
+	shared->ary = malloc(0);
 
 	srand(time(NULL));
 
@@ -98,13 +99,15 @@ int main() {
 		int a;
 		a = rand();
 
+		sleep(2);
+
 		if (pid > 0){
 			
 			//big daddy
 
 		} else if (pid == 0){
 
-			spawn_process(a % 2, a % 5);
+			spawn_process(a % 2);
 
 
 		} else {
@@ -114,7 +117,7 @@ int main() {
 
 		}
 	}
-
+	free(shared->ary);
 	exit(EXIT_SUCCESS);
 
 }
