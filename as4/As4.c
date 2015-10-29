@@ -1,4 +1,4 @@
-#include "list.h"
+#include "aryop.h"
 #include "sem.h"
 #include <math.h>
 #include <sys/types.h>
