@@ -16,7 +16,7 @@
 struct sharedvar {
 	int balance;
 	int wcount;
-	struct node *list;
+	int ary[];
 };
 
 union semun {
