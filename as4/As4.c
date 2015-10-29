@@ -17,19 +17,23 @@ struct sharedvar *shared;
 union semun semctlarg;
 
 void withdraw(int withdrawal){
+	printf("%d: attempting to withdraw %d\n", getpid(), withdrawal);
 	semwait(semid, MUTEX);
 	if (shared->wcount == 0 && shared->balance > withdrawal){
-		printf("%d: current balance before withdrawal: %d", getpid(), shared->balance);
 		shared->balance = shared->balance - withdrawal;
-		printf("%d: current balance after withdrawal: %d", getpid(), shared->balance);
+		printf("%d: current balance after withdrawal: %d\n", getpid(), shared->balance);
+		printf("%d: withdrawal successful\n", getpid());
 		semsignal(semid, MUTEX);
 	} else {
 		shared->wcount = shared->wcount + 1;
+		printf("%d: not enough funds, need to deposit more. waiting...\n", getpid());
 		add(withdrawal);
 		semsignal(semid, MUTEX);
 		semwait(semid, WLIST);
 		shared->balance = shared->balance - firstVal();
 		deleteHead();
+		printf("%d: current balance after withdrawal: %d\n", getpid(), firstVal());
+		printf("%d: withdrawal successful\n", getpid());
 		shared->wcount = shared->wcount - 1;
 		if (shared->wcount > 1 && firstVal() < shared->balance){
 			semsignal(semid, WLIST);
@@ -37,15 +41,15 @@ void withdraw(int withdrawal){
 			semsignal(semid, MUTEX);
 		}
 	}
-	printf("%d: withdrawal successful\n", getpid());
 	exit(EXIT_SUCCESS);
 }
 
 void deposit(int deposit){
+	printf("%d: attempting to deposit %d\n",getpid(), deposit);
 	semwait(semid, MUTEX);
-	printf("%d: current balance before deposit: %d", getpid(), shared->balance);
 	shared->balance = shared->balance + deposit;
-	printf("%d: current balance after deposit: %d", getpid(), shared->balance);
+	printf("%d: current balance after deposit: %d\n", getpid(), shared->balance);
+	printf("%d: deposit successful\n", getpid());
 	if (shared->wcount == 0){
 		semsignal(semid, MUTEX);
 	} else if (firstVal() > shared->balance){
@@ -53,7 +57,6 @@ void deposit(int deposit){
 	} else {
 		semsignal(semid, WLIST);
 	}
-	printf("%d: deposit successful\n", getpid());
 	exit(EXIT_SUCCESS);
 }
 
