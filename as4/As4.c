@@ -17,23 +17,21 @@ struct sharedvar *shared;
 union semun semctlarg;
 
 void withdraw(int withdrawal){
-	printf("%d: attempting to withdraw %d\n", getpid(), withdrawal);
+	printf("%d: Attempting to withdraw $%d.\n", getpid(), withdrawal);
 	semwait(semid, MUTEX);
 	if (shared->wcount == 0 && shared->balance > withdrawal){
 		shared->balance = shared->balance - withdrawal;
-		printf("%d: current balance after withdrawal: %d\n", getpid(), shared->balance);
-		printf("%d: withdrawal successful\n", getpid());
+		printf("%d: Withdrawal successful. Current balance after withdrawal: $%d.\n", getpid(), shared->balance);
 		semsignal(semid, MUTEX);
 	} else {
 		shared->wcount = shared->wcount + 1;
-		printf("%d: not enough funds, need to deposit more. waiting...\n", getpid());
+		printf("%d: Not enough funds, please deposit more. Waiting...\n", getpid());
 		add(withdrawal);
 		semsignal(semid, MUTEX);
 		semwait(semid, WLIST);
 		shared->balance = shared->balance - firstVal();
 		deleteHead();
-		printf("%d: current balance after withdrawal: %d\n", getpid(), firstVal());
-		printf("%d: withdrawal successful\n", getpid());
+		printf("%d: Enough funds now deposited. Withdrawal successful. Current balance after withdrawal: $%d.\n", getpid(), firstVal());
 		shared->wcount = shared->wcount - 1;
 		if (shared->wcount > 1 && firstVal() < shared->balance){
 			semsignal(semid, WLIST);
@@ -45,11 +43,10 @@ void withdraw(int withdrawal){
 }
 
 void deposit(int deposit){
-	printf("%d: attempting to deposit %d\n",getpid(), deposit);
+	printf("%d: Attempting to deposit $%d.\n",getpid(), deposit);
 	semwait(semid, MUTEX);
 	shared->balance = shared->balance + deposit;
-	printf("%d: current balance after deposit: %d\n", getpid(), shared->balance);
-	printf("%d: deposit successful\n", getpid());
+	printf("%d: Deposit Successful. Current balance after deposit: $%d.\n", getpid(), shared->balance);
 	if (shared->wcount == 0){
 		semsignal(semid, MUTEX);
 	} else if (firstVal() > shared->balance){
@@ -60,7 +57,9 @@ void deposit(int deposit){
 	exit(EXIT_SUCCESS);
 }
 
-void spawn_process(int type){
+void spawn_process(int type, int sleeptime){
+	
+	sleep(sleeptime);	
 
 	switch(type){
 		case 0:
@@ -95,12 +94,9 @@ int main() {
 	int fork_count;
 	for (fork_count = 0; fork_count < NUM_FORKS; fork_count++){
 
-		sleep(2);
-
+		pid = fork();
 		int a;
 		a = rand();
-
-		pid = fork();
 
 		if (pid > 0){
 			
@@ -108,7 +104,7 @@ int main() {
 
 		} else if (pid == 0){
 
-			spawn_process(a % 2);
+			spawn_process(a % 2, a % 5);
 
 
 		} else {

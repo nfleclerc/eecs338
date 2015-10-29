@@ -22,7 +22,7 @@ struct sharedvar {
 union semun {
         int val;    
         struct semid_ds *buf;           
-        unsigned short *array;         
+        signed short *array;         
 };
 
 void semwait(int semid, int semaphore){
