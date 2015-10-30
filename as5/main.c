@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.>
+#include <sys/types.h>
 #include <unistd.h>
 #include <pthread.h>
 #include <semaphore.h>
@@ -25,12 +25,13 @@ void initialize_semaphores() {
 		perror("sem_init(&wrt)");
 		exit(EXIT_FAILURE);
 	}
+}
 
 int main() {
 	
 	pthread_t readerThread;
 	pthread_t writerThread;
-	pthread_attr_t arrt;
+	pthread_attr_t attr;
 	void *status;
 
 	pthread_attr_init(&attr);
