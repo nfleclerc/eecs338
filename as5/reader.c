@@ -16,7 +16,13 @@ void *reader(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
-	//entry section stuff
+	shared->readcount = shared->readcount + 1;
+	if (shared->readcount == 1){
+		if (sem_wait(shared->wrt) == -1) {
+			perror("wait(wrt)");
+			pthread_exit(NULL);
+		}
+	}
 
 	if (sem_post(shared->mutex) == -1) {
 		perror("signal(mutex)");
@@ -35,7 +41,13 @@ void *reader(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
-	//exit section stuff
+	shared->readcount = shared->readcount - 1;
+	if (shared->readcount == 0){
+		if (sem_post(shared->wrt) == -1) {
+			perror("signal(wrt)");
+			pthread_exit(NULL);
+		}
+	}
 
 	if (sem_post(shared->mutex) == -1) {
 		perror("signal(mutex)");
