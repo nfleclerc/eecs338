@@ -1,0 +1,28 @@
+8645: Attempting to deposit $305.
+8645: Deposit Successful. Current balance after deposit: $805.
+8646: Attempting to withdraw $318.
+8646: Withdrawal successful. Current balance after withdrawal: $487.
+8647: Attempting to deposit $648.
+8647: Deposit Successful. Current balance after deposit: $1135.
+8648: Attempting to deposit $759.
+8648: Deposit Successful. Current balance after deposit: $1894.
+8652: Attempting to withdraw $379.
+8652: Withdrawal successful. Current balance after withdrawal: $1515.
+8653: Attempting to withdraw $386.
+8653: Withdrawal successful. Current balance after withdrawal: $1129.
+8654: Attempting to deposit $835.
+8654: Deposit Successful. Current balance after deposit: $1964.
+8655: Attempting to withdraw $523.
+8655: Withdrawal successful. Current balance after withdrawal: $1441.
+8656: Attempting to withdraw $700.
+8656: Withdrawal successful. Current balance after withdrawal: $741.
+8660: Attempting to deposit $907.
+8660: Deposit Successful. Current balance after deposit: $1648.
+8661: Attempting to withdraw $914.
+8661: Withdrawal successful. Current balance after withdrawal: $734.
+8662: Attempting to deposit $269.
+8662: Deposit Successful. Current balance after deposit: $1003.
+8663: Attempting to withdraw $19.
+8663: Withdrawal successful. Current balance after withdrawal: $984.
+8664: Attempting to withdraw $727.
+8664: Withdrawal successful. Current balance after withdrawal: $257.

@@ -18,7 +18,6 @@ union semun semctlarg;
 
 void withdraw(int withdrawal){
 	printf("%d: Attempting to withdraw $%d.\n", getpid(), withdrawal);
-	sleep(1);
 	semwait(semid, MUTEX);
 	if (shared->wcount == 0 && shared->balance > withdrawal){
 		shared->balance = shared->balance - withdrawal;
@@ -32,7 +31,7 @@ void withdraw(int withdrawal){
 		semwait(semid, WLIST);
 		shared->balance = shared->balance - firstVal(shared->ary);
 		shared->ary = deleteHead(shared->ary);
-		printf("%d: Enough funds now deposited. Withdrawal successful. Current balance after withdrawal: $%d.\n", getpid(), firstVal(shared->ary));
+		printf("%d: Enough funds now deposited. Withdrawal successful. Current balance after withdrawal: $%d.\n", getpid(), shared->balance);
 		shared->wcount = shared->wcount - 1;
 		if (shared->wcount > 1 && firstVal(shared->ary) < shared->balance){
 			semsignal(semid, WLIST);
@@ -45,7 +44,6 @@ void withdraw(int withdrawal){
 
 void deposit(int deposit){
 	printf("%d: Attempting to deposit $%d.\n",getpid(), deposit);
-	sleep(1);
 	semwait(semid, MUTEX);
 	shared->balance = shared->balance + deposit;
 	printf("%d: Deposit Successful. Current balance after deposit: $%d.\n", getpid(), shared->balance);
@@ -63,10 +61,10 @@ void spawn_process(int type){
 
 	switch(type){
 		case 0:
-			withdraw(rand() % 1000);
+			withdraw(rand() % 1000 + 1);
 			break;
 		case 1:
-			deposit(rand() % 1000);
+			deposit(rand() % 1000 + 1);
 			break;
 	}
 
@@ -117,7 +115,8 @@ int main() {
 
 		}
 	}
-	free(shared->ary);
+	semctl(semid,NUM_SEMS,IPC_RMID,0);
+    	shmctl(shmid,IPC_RMID,0);
 	exit(EXIT_SUCCESS);
 
 }

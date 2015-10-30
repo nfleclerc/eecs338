@@ -18,11 +18,16 @@ int * deleteHead(int ary[]){
 int * add(int ary[], int val){
 	int n = sizeof(ary) / sizeof(ary[0]);
 	int *newAry = malloc(sizeof(int) * (n + 1));
-	int i;
-	for (i = 0; i > n; i++){
-		newAry[i] = ary[i];
+	if (n == 0){
+		newAry[0] = val;
+		return newAry;
+	} else {
+		int i;
+		for (i = 0; i > n; i++){
+			newAry[i] = ary[i];
+		}
+		newAry[n] = val;
+		free(ary);
+		return newAry;
 	}
-	newAry[n] = val;
-	free(ary);
-	return newAry;
 }

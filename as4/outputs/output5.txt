@@ -1,0 +1,30 @@
+9160: Attempting to deposit $272.
+9160: Deposit Successful. Current balance after deposit: $772.
+9161: Attempting to deposit $70.
+9161: Deposit Successful. Current balance after deposit: $842.
+9162: Attempting to deposit $994.
+9162: Deposit Successful. Current balance after deposit: $1836.
+9163: Attempting to deposit $905.
+9163: Deposit Successful. Current balance after deposit: $2741.
+9164: Attempting to withdraw $267.
+9164: Withdrawal successful. Current balance after withdrawal: $2474.
+9165: Attempting to withdraw $595.
+9165: Withdrawal successful. Current balance after withdrawal: $1879.
+9166: Attempting to withdraw $383.
+9166: Withdrawal successful. Current balance after withdrawal: $1496.
+9167: Attempting to withdraw $878.
+9167: Withdrawal successful. Current balance after withdrawal: $618.
+9168: Attempting to deposit $215.
+9168: Deposit Successful. Current balance after deposit: $833.
+9169: Attempting to withdraw $500.
+9169: Withdrawal successful. Current balance after withdrawal: $333.
+9170: Attempting to deposit $401.
+9170: Deposit Successful. Current balance after deposit: $734.
+9171: Attempting to withdraw $230.
+9171: Withdrawal successful. Current balance after withdrawal: $504.
+9172: Attempting to deposit $461.
+9172: Deposit Successful. Current balance after deposit: $965.
+9173: Attempting to withdraw $474.
+9173: Withdrawal successful. Current balance after withdrawal: $491.
+9174: Attempting to deposit $934.
+9174: Deposit Successful. Current balance after deposit: $1425.

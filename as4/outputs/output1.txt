@@ -1,0 +1,30 @@
+8513: Attempting to withdraw $28.
+8513: Withdrawal successful. Current balance after withdrawal: $472.
+8514: Attempting to deposit $804.
+8514: Deposit Successful. Current balance after deposit: $1276.
+8515: Attempting to deposit $525.
+8515: Deposit Successful. Current balance after deposit: $1801.
+8516: Attempting to withdraw $331.
+8516: Withdrawal successful. Current balance after withdrawal: $1470.
+8517: Attempting to withdraw $318.
+8517: Withdrawal successful. Current balance after withdrawal: $1152.
+8518: Attempting to deposit $820.
+8518: Deposit Successful. Current balance after deposit: $1972.
+8519: Attempting to deposit $548.
+8519: Deposit Successful. Current balance after deposit: $2520.
+8520: Attempting to deposit $27.
+8520: Deposit Successful. Current balance after deposit: $2547.
+8521: Attempting to withdraw $260.
+8521: Withdrawal successful. Current balance after withdrawal: $2287.
+8522: Attempting to deposit $711.
+8522: Deposit Successful. Current balance after deposit: $2998.
+8523: Attempting to withdraw $637.
+8523: Withdrawal successful. Current balance after withdrawal: $2361.
+8524: Attempting to withdraw $169.
+8524: Withdrawal successful. Current balance after withdrawal: $2192.
+8525: Attempting to withdraw $224.
+8525: Withdrawal successful. Current balance after withdrawal: $1968.
+8526: Attempting to deposit $733.
+8526: Deposit Successful. Current balance after deposit: $2701.
+8527: Attempting to withdraw $126.
+8527: Withdrawal successful. Current balance after withdrawal: $2575.

@@ -1,0 +1,31 @@
+8995: Attempting to withdraw $32.
+8995: Withdrawal successful. Current balance after withdrawal: $468.
+8996: Attempting to deposit $305.
+8996: Deposit Successful. Current balance after deposit: $773.
+8997: Attempting to withdraw $501.
+8997: Withdrawal successful. Current balance after withdrawal: $272.
+8999: Attempting to deposit $792.
+8999: Deposit Successful. Current balance after deposit: $1064.
+8998: Attempting to withdraw $612.
+8998: Not enough funds, please deposit more. Waiting...
+8998: Enough funds now deposited. Withdrawal successful. Current balance after withdrawal: $1064.
+9000: Attempting to deposit $481.
+9000: Deposit Successful. Current balance after deposit: $1545.
+9001: Attempting to withdraw $443.
+9001: Withdrawal successful. Current balance after withdrawal: $1102.
+9002: Attempting to withdraw $2.
+9002: Withdrawal successful. Current balance after withdrawal: $1100.
+9003: Attempting to deposit $613.
+9003: Deposit Successful. Current balance after deposit: $1713.
+9004: Attempting to withdraw $226.
+9004: Withdrawal successful. Current balance after withdrawal: $1487.
+9005: Attempting to deposit $924.
+9005: Deposit Successful. Current balance after deposit: $2411.
+9006: Attempting to deposit $230.
+9006: Deposit Successful. Current balance after deposit: $2641.
+9007: Attempting to deposit $91.
+9007: Deposit Successful. Current balance after deposit: $2732.
+9008: Attempting to withdraw $272.
+9008: Withdrawal successful. Current balance after withdrawal: $2460.
+9009: Attempting to deposit $348.
+9009: Deposit Successful. Current balance after deposit: $2808.
