@@ -2,5 +2,5 @@
 
 #ifndef SEMAPHORE_WRITER
 #define SEMAPHORE_WRITER
-void *producer(void *shared);
+void *writer(void *shared);
 #endif
