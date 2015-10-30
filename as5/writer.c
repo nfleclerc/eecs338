@@ -16,7 +16,8 @@ void *writer(void *shared_data) {
 
 	//in critical section
 
-	printf("Writing the next Shakespearean play");
+	printf("Writing the next Shakespearean play... \n");
+	fflush(0);
 
 	//crit section end
 
