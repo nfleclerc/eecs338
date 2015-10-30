@@ -1,3 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include "common.h"
+
 void *reader(void *shared_data) {
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
 

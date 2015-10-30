@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include "common.h"
 
 void *writer(void *shared_data) {
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
