@@ -18,13 +18,13 @@ void *writer(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
-	printf("%d: Waiting on wrt semaphore...\n", (int)pthread_self());
+	printf("%lu: Waiting on wrt semaphore...\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep (1);
 
 	//in critical section
 
-	printf("%d: Writing the next Shakespearean play... \n", (int)pthread_self());
+	printf("%lu: Writing the next Shakespearean play... \n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
@@ -36,7 +36,7 @@ void *writer(void *shared_data) {
 
 		pthread_exit(NULL);
 	}
-	printf("%d: Signaling the wrt semaphore...\n", (int)pthread_self());
+	printf("%lu: Signaling the wrt semaphore...\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 

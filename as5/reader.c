@@ -17,12 +17,12 @@ void *reader(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
-	printf("%d: Waiting on mutex\n", (int)pthread_self());
+	printf("%lu: Waiting on mutex\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
 	shared->readcount = shared->readcount + 1;
-	printf("%d: Incrementing readcount\n", (int)pthread_self());
+	printf("%lu: Incrementing readcount\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
@@ -31,7 +31,7 @@ void *reader(void *shared_data) {
 			perror("wait(wrt)");
 			pthread_exit(NULL);
 		}
-		printf("%d: No readers arriving. Signaling Writers.\n", (int)pthread_self());
+		printf("%lu: No readers arriving. Signaling Writers.\n", (unsigned long)pthread_self());
 		fflush(0);
 		sleep(1);
 	}
@@ -40,13 +40,13 @@ void *reader(void *shared_data) {
 		perror("signal(mutex)");
 		pthread_exit(NULL);
 	}
-	printf("%d: Signaling mutex\n", (int)pthread_self());
+	printf("%lu: Signaling mutex\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
 	//critical section start
 
-	printf("%d: Reading... \n", (int)pthread_self());
+	printf("%lu: Reading... \n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
@@ -57,12 +57,12 @@ void *reader(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
-	printf("%d: Waiting on mutex\n", (int)pthread_self());
+	printf("%lu: Waiting on mutex\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
 	shared->readcount = shared->readcount - 1;
-	printf("%d: Decrementing readcount\n", (int)pthread_self());
+	printf("%lu: Decrementing readcount\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
@@ -71,7 +71,7 @@ void *reader(void *shared_data) {
 			perror("signal(wrt)");
 			pthread_exit(NULL);
 		}
-		printf("%d: No readers arriving. Signaling Writers.\n", (int)pthread_self());
+		printf("%lu: No readers arriving. Signaling Writers.\n", (unsigned long)pthread_self());
 		fflush(0);
 		sleep(1);
 	}
@@ -81,7 +81,7 @@ void *reader(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
-	printf("%d: Signaling mutex\n", (int)pthread_self());
+	printf("%lu: Signaling mutex\n", (unsigned long)pthread_self());
 	fflush(0);
 	sleep(1);
 
