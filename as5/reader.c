@@ -5,7 +5,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include "common.h"
-
+#include <time.h>
 
 void *reader(void *shared_data) {
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
@@ -19,12 +19,12 @@ void *reader(void *shared_data) {
 
 	printf("%lu: Waiting on mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	shared->readcount = shared->readcount + 1;
 	printf("%lu: Incrementing readcount\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	if (shared->readcount == (int *)1){
 		if (sem_wait(shared->wrt) == -1) {
@@ -33,7 +33,7 @@ void *reader(void *shared_data) {
 		}
 		printf("%lu: No readers arriving. Signaling Writers.\n", (unsigned long)pthread_self());
 		fflush(0);
-		sleep(1);
+		nanosleep((const struct timespec[]){{2, 0}}, NULL);
 	}
 
 	if (sem_post(shared->mutex) == -1) {
@@ -42,13 +42,13 @@ void *reader(void *shared_data) {
 	}
 	printf("%lu: Signaling mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	//critical section start
 
 	printf("%lu: Reading... \n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	//critical section end
 
@@ -59,12 +59,12 @@ void *reader(void *shared_data) {
 
 	printf("%lu: Waiting on mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	shared->readcount = shared->readcount - 1;
 	printf("%lu: Decrementing readcount\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	if (shared->readcount == (int *)0){
 		if (sem_post(shared->wrt) == -1) {
@@ -73,7 +73,7 @@ void *reader(void *shared_data) {
 		}
 		printf("%lu: No readers arriving. Signaling Writers.\n", (unsigned long)pthread_self());
 		fflush(0);
-		sleep(1);
+		nanosleep((const struct timespec[]){{2, 0}}, NULL);
 	}
 
 	if (sem_post(shared->mutex) == -1) {
@@ -83,7 +83,7 @@ void *reader(void *shared_data) {
 
 	printf("%lu: Signaling mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep(1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	pthread_exit(NULL);
 
