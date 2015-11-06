@@ -7,7 +7,10 @@
 #include "common.h"
 #include <time.h>
 
+//control of the writer thread
 void *writer(void *shared_data) {
+	
+	//set up the shared data
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
 
 	//wait(wrt)
@@ -16,12 +19,14 @@ void *writer(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
+	//print message
 	printf("%lu: Waiting on wrt semaphore...\n", (unsigned long)pthread_self());
 	fflush(0);
-	sleep (1);
+	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
 	//in critical section
 
+	//writer is writing
 	printf("%lu: Writing the next Shakespearean play... \n", (unsigned long)pthread_self());
 	fflush(0);
 	nanosleep((const struct timespec[]){{2, 0}}, NULL);
@@ -34,10 +39,12 @@ void *writer(void *shared_data) {
 
 		pthread_exit(NULL);
 	}
+	//print message
 	printf("%lu: Signaling the wrt semaphore...\n", (unsigned long)pthread_self());
 	fflush(0);
 	nanosleep((const struct timespec[]){{2, 0}}, NULL);
 
+	//exit
 	pthread_exit(NULL);
 
 }
