@@ -22,7 +22,7 @@ void *reader(void *shared_data) {
 	//print message that we are waiting and sleep
 	printf("%lu: Waiting on mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//increment the number of readers
 	shared->readcount = shared->readcount + 1;
@@ -30,7 +30,7 @@ void *reader(void *shared_data) {
 	//print message that the readcount is being incremented and sleep
 	printf("%lu: Incrementing readcount\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//if the readcount = 1
 	if (shared->readcount == (int *)1){
@@ -43,7 +43,7 @@ void *reader(void *shared_data) {
 		//print message and sleep
 		printf("%lu: Reader reading. Writers waiting.\n", (unsigned long)pthread_self());
 		fflush(0);
-		nanosleep((const struct timespec[]){{2, 0}}, NULL);
+		nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 	}
 
 	//signal mutex
@@ -54,14 +54,14 @@ void *reader(void *shared_data) {
 	//print that mutex is being signaled
 	printf("%lu: Signaling mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//critical section start
 
 	//reader is reading
 	printf("%lu: Reading... \n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//critical section end
 
@@ -74,7 +74,7 @@ void *reader(void *shared_data) {
 	//print message
 	printf("%lu: Waiting on mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//decrement readcount
 	shared->readcount = shared->readcount - 1;
@@ -82,7 +82,7 @@ void *reader(void *shared_data) {
 	//print message
 	printf("%lu: Decrementing readcount\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//if readcount = 0
 	if (shared->readcount == (int *)0){
@@ -93,7 +93,7 @@ void *reader(void *shared_data) {
 		}
 		printf("%lu: No readers arriving. Signaling Writers.\n", (unsigned long)pthread_self());
 		fflush(0);
-		nanosleep((const struct timespec[]){{2, 0}}, NULL);
+		nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 	}
 
 	//signal the mutex
@@ -105,7 +105,7 @@ void *reader(void *shared_data) {
 	//print message
 	printf("%lu: Signaling mutex\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{2, 0}}, (const struct timespec[]) );
 
 	//exit
 	pthread_exit(NULL);
