@@ -22,15 +22,14 @@ void *writer(void *shared_data) {
 	//print message
 	printf("%lu: Waiting on wrt semaphore...\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{1, 0}}, (struct timespec[]){{1, 0}});
 
 	//in critical section
 
 	//writer is writing
 	printf("%lu: Writing the next Shakespearean play... \n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
-
+	nanosleep((const struct timespec[]){{1, 0}}, (struct timespec[]){{1, 0}});
 	//crit section end
 
 	//signal(wrt)
@@ -42,7 +41,7 @@ void *writer(void *shared_data) {
 	//print message
 	printf("%lu: Signaling the wrt semaphore...\n", (unsigned long)pthread_self());
 	fflush(0);
-	nanosleep((const struct timespec[]){{2, 0}}, NULL);
+	nanosleep((const struct timespec[]){{1, 0}}, (struct timespec[]){{1, 0}});
 
 	//exit
 	pthread_exit(NULL);
