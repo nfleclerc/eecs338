@@ -7,10 +7,18 @@
 #include "common.h"
 #include <time.h>
 
+
 //control the reader thread
 void *reader(void *shared_data) {
-	
-	//set up the shared data
+  	time_t rawtime;
+  	struct tm * timeinfo;
+
+	//print when reader thread is first made
+  	time (&rawtime);
+  	timeinfo = localtime(&rawtime);
+  	printf ("%lu: Reader thread made at: %s", (unsigned long)pthread_self(), asctime(timeinfo));
+		
+ 	//set up the shared data
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
 
 	//wait(mutex)
@@ -133,6 +141,12 @@ void *reader(void *shared_data) {
 		perror("nanosleep() error");
 		pthread_exit(NULL);
 	}
+
+	//print when reader thread exits
+  	time (&rawtime);
+  	timeinfo = localtime(&rawtime);
+  	printf ("%lu: Reader thread exited at: %s", (unsigned long)pthread_self(), asctime(timeinfo));
+        
 
 	//exit
 	pthread_exit(NULL);

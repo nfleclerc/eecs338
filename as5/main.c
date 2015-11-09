@@ -88,18 +88,17 @@ int main() {
 	int j;
 	int k;
 
-	//tell parent thread to wait on the readers
-	for (j = 0; j < readersspawned; j++) {
-		if (pthread_join(readerThread, &status) == -1) {
-			perror("pthread_join(readerThread)");
-			exit(EXIT_FAILURE);
-		}
-	}
-
 	//tell parent to wait on writers
 	for (k = 0; k < writersspawned; k++) {
 		if (pthread_join(writerThread, &status) == -1) {
 			perror("pthread_join(writerThread)");
+			exit(EXIT_FAILURE);
+		}
+	}
+	//tell parent thread to wait on the readers
+	for (j = 0; j < readersspawned; j++) {
+		if (pthread_join(readerThread, &status) == -1) {
+			perror("pthread_join(readerThread)");
 			exit(EXIT_FAILURE);
 		}
 	}

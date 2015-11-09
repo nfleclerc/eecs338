@@ -1,0 +1,107 @@
+139887964849920: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887964849920: Waiting on mutex
+139887814633216: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887806240512: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887948064512: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887806240512: Waiting on wrt semaphore...
+139887939671808: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887931279104: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887922886400: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887914493696: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887906100992: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887823025920: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887973242624: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887956457216: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887789455104: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887797847808: Reader thread made at: Mon Nov  9 12:36:05 2015
+139887781062400: Writer thread made at: Mon Nov  9 12:36:05 2015
+139887806240512: Writing the next Shakespearean play... 
+139887964849920: Incrementing readcount
+139887806240512: Signaling the wrt semaphore...
+139887964849920: Signaling mutex
+139887948064512: Waiting on wrt semaphore...
+139887814633216: Waiting on mutex
+139887964849920: Reading... 
+139887806240512: Writer thread exited at: Mon Nov  9 12:36:08 2015
+139887948064512: Writing the next Shakespearean play... 
+139887814633216: Incrementing readcount
+139887948064512: Signaling the wrt semaphore...
+139887814633216: Signaling mutex
+139887931279104: Waiting on mutex
+139887939671808: Waiting on wrt semaphore...
+139887931279104: Incrementing readcount
+139887948064512: Writer thread exited at: Mon Nov  9 12:36:10 2015
+139887939671808: Writing the next Shakespearean play... 
+139887814633216: Reading... 
+139887931279104: Signaling mutex
+139887939671808: Signaling the wrt semaphore...
+139887906100992: Waiting on mutex
+139887922886400: Waiting on wrt semaphore...
+139887931279104: Reading... 
+139887906100992: Incrementing readcount
+139887939671808: Writer thread exited at: Mon Nov  9 12:36:12 2015
+139887922886400: Writing the next Shakespearean play... 
+139887906100992: Signaling mutex
+139887931279104: Waiting on mutex
+139887922886400: Signaling the wrt semaphore...
+139887914493696: Waiting on wrt semaphore...
+139887906100992: Reading... 
+139887931279104: Decrementing readcount
+139887914493696: Writing the next Shakespearean play... 
+139887922886400: Writer thread exited at: Mon Nov  9 12:36:14 2015
+139887931279104: Signaling mutex
+139887789455104: Waiting on wrt semaphore...
+139887914493696: Signaling the wrt semaphore...
+139887973242624: Waiting on mutex
+139887789455104: Writing the next Shakespearean play... 
+139887931279104: Reader thread exited at: Mon Nov  9 12:36:16 2015
+139887973242624: Incrementing readcount
+139887914493696: Writer thread exited at: Mon Nov  9 12:36:16 2015
+139887789455104: Signaling the wrt semaphore...
+139887956457216: Waiting on mutex
+139887973242624: Signaling mutex
+139887781062400: Waiting on wrt semaphore...
+139887781062400: Writing the next Shakespearean play... 
+139887973242624: Reading... 
+139887789455104: Writer thread exited at: Mon Nov  9 12:36:18 2015
+139887956457216: Incrementing readcount
+139887781062400: Signaling the wrt semaphore...
+139887973242624: Waiting on mutex
+139887956457216: Signaling mutex
+139887956457216: Reading... 
+139887973242624: Decrementing readcount
+139887781062400: Writer thread exited at: Mon Nov  9 12:36:20 2015
+139887973242624: Signaling mutex
+139887964849920: Waiting on mutex
+139887964849920: Decrementing readcount
+139887973242624: Reader thread exited at: Mon Nov  9 12:36:22 2015
+139887964849920: Signaling mutex
+139887814633216: Waiting on mutex
+139887964849920: Reader thread exited at: Mon Nov  9 12:36:24 2015
+139887814633216: Decrementing readcount
+139887814633216: Signaling mutex
+139887823025920: Waiting on mutex
+139887814633216: Reader thread exited at: Mon Nov  9 12:36:26 2015
+139887823025920: Incrementing readcount
+139887823025920: Signaling mutex
+139887906100992: Waiting on mutex
+139887823025920: Reading... 
+139887906100992: Decrementing readcount
+139887906100992: Signaling mutex
+139887797847808: Waiting on mutex
+139887906100992: Reader thread exited at: Mon Nov  9 12:36:30 2015
+139887797847808: Incrementing readcount
+139887797847808: Signaling mutex
+139887956457216: Waiting on mutex
+139887797847808: Reading... 
+139887956457216: Decrementing readcount
+139887956457216: Signaling mutex
+139887823025920: Waiting on mutex
+139887823025920: Decrementing readcount
+139887956457216: Reader thread exited at: Mon Nov  9 12:36:34 2015
+139887823025920: Signaling mutex
+139887797847808: Waiting on mutex
+139887823025920: Reader thread exited at: Mon Nov  9 12:36:36 2015
+139887797847808: Decrementing readcount
+139887797847808: Signaling mutex
+139887797847808: Reader thread exited at: Mon Nov  9 12:36:38 2015

@@ -9,7 +9,14 @@
 
 //control of the writer thread
 void *writer(void *shared_data) {
-	
+	time_t rawtime;
+        struct tm * timeinfo;
+
+        //print when writer thread is first made
+        time (&rawtime);
+        timeinfo = localtime (&rawtime);       
+	printf ("%lu: Writer thread made at: %s", (unsigned long)pthread_self(), asctime(timeinfo));
+
 	//set up the shared data
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
 
@@ -52,6 +59,11 @@ void *writer(void *shared_data) {
 		pthread_exit(NULL);
 	}
 
+        //print when writer thread is first made
+        time (&rawtime);
+        timeinfo = localtime(&rawtime);
+	printf ("%lu: Writer thread exited at: %s", (unsigned long)pthread_self(), asctime(timeinfo));
+	
 	//exit
 	pthread_exit(NULL);
 
