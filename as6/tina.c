@@ -6,6 +6,25 @@
 #include <semaphore.h>
 #include "common.h"
 
+
+void rpc_getmemycookie(char *host, int cookiecount){
+	CLIENT *clnt;
+	void *result;
+
+	clnt = clnt_create(host, COOKIE_PRG, COOKIE_VER, "udp");
+	if (clnt == NULL){
+		clnt_pcreateerror(host);
+		exit(EXIT_FAILURE);
+	}
+
+	result = getmemycookie_1(&cookiecount, clnt);
+	if (result == (void *)NULL){
+		clnt_perror (clnt, "call failed");
+	}
+	
+	clnt_destroy(clnt);
+}
+
 void tina(void *shared_data){
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
 	
