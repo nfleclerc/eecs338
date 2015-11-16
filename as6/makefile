@@ -1,20 +1,30 @@
 NAME := as6
-SOURCE := $(wildcard *.c)
-OUTPUT := main.o
-RPC_STUBS := cookie.h cookie_clnt.c cookie_xdr.c cookie_svc.c
+SERVER := mother.o
+CLIENTA := tina.o
+CLIENTB := judy.o
+RPC_SVC := cookie_xdr.c cookie_svc.c
+RPC_CLNT := cookie_clnt.c cookie_xdr.c
 CC := gcc
-ARGS := -Wall -g -Werror
-LIBS := -pthread
+ARGS := -Wall -g
+LIBS := -lnsl
 
 .PHONY: clean distclean
 
-all: $(SOURCE)
-	$(CC) $(ARGS) $(SOURCE) -o $(OUTPUT) $(LIBS)
+all: $(CLIENTA) $(CLIENTB) $(SERVER)
+
+$(CLIENTA):
+	$(CC) $(ARGS) tina.c $(RPC_CLNT) -o $(CLIENTA) $(LIBS) 
+
+$(CLIENTB):
+	$(CC) $(ARGS) judy.c $(RPC_CLNT) -o $(CLIENTB) $(LIBS) 
+
+$(SERVER):
+	$(CC) $(ARGS) mother.c $(RPC_SVC) -o $(SERVER) $(LIBS) 
 
 clean:
-	@- $(RM) $(OUTPUT)
+	@- $(RM) -f $(SERVER) $(CLIENTS) 
 
 clean-rpc:
-	@- $(RM) $(RPC_STUBS)
+	@- $(RM) -f  $(RPC_CLNT) $(RPC_SVC)
 
 distclean: clean

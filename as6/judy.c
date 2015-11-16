@@ -5,6 +5,33 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include "common.h"
+#include "cookie.h"
+
+void rpc_getmemycookie(char *host){
+	
+	CLIENT *clnt;
+	int *result;
+	
+	clnt = clnt_create (host, COOKIE_PRG, COOKIE_VER, "udp");
+	if (clnt == NULL) {
+		clnt_pcreateerror(host);
+		exit(EXIT_FAILURE);
+	}
+
+	args *arg;
+	arg = (args *) malloc(sizeof(args));
+	arg->name = "Judy";
+
+	result = getmemycookie_1(arg, clnt);
+	if (result == (int *)NULL){
+		clnt_perror(clnt, "call failed");
+	}
+
+	clnt_destroy(clnt);
+
+}
+
+
 
 void judy(void *shared_data){
 	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
@@ -27,6 +54,7 @@ void judy(void *shared_data){
 		
 		// critical section start
 		
+
 		shared->cookiecount = shared->cookiecount - 1;
 		shared->tinacount = 0;
 		

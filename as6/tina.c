@@ -5,9 +5,9 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include "common.h"
+#include "cookie.h"
 
-
-void rpc_getmemycookie(char *host, int cookiecount){
+void rpc_getmemycookie(char *host){
 	CLIENT *clnt;
 	void *result;
 
@@ -17,7 +17,7 @@ void rpc_getmemycookie(char *host, int cookiecount){
 		exit(EXIT_FAILURE);
 	}
 
-	result = getmemycookie_1(&cookiecount, clnt);
+	result = getmemycookie_1(&result, clnt);
 	if (result == (void *)NULL){
 		clnt_perror (clnt, "call failed");
 	}

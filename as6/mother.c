@@ -9,12 +9,12 @@ getmemycookie_1_svc(args *argp, struct svc_req *rqstp) {
 
 	printf("%s is requesting a cookie\n", argp->name);
 
-	if (shared->cookiecount == (int *)0){
-		result = -2;
-	} else if (strcmp(argp->name, "Judy") && shared->tinacount > 2){
-		result = -1;
+	if (argp->cookiecount == 0){
+		result = (int *)-2;
+	} else if (strcmp(argp->name, "Judy")){
+		result = (int *)-1;
 	} else {
-		result = 1;
+		result = (int *)1;
 	}
 
 	return &result;
