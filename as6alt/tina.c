@@ -1,6 +1,6 @@
 #include "cookie.h"
 #include <stdio.h>
-
+#include <stdlib.h>
 
 void
 cookie_prg_1(char *host)
@@ -13,7 +13,7 @@ cookie_prg_1(char *host)
 	clnt = clnt_create (host, COOKIE_PRG, COOKIE_VER, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror (host);
-		exit (1);
+		exit(EXIT_FAILURE);
 	}
 #endif	/* DEBUG */
 
@@ -48,7 +48,7 @@ main (int argc, char *argv[])
 	host = argv[1];
 	cookie_prg_1 (host);
 
-exit (0);
+	exit (EXIT_SUCCESS);
 }
 
 
