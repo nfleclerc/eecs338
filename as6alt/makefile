@@ -24,6 +24,7 @@ mother: $(SSOURCE) $(RPCGEN)
 $(RPCGEN): $(RPCSRC)
 	rpcgen $(RPCSRC)
 clean:
-	@- rm -f $(CLIENT) $(SERVER) $(RPCGEN)
+	@- rm -f $(CLIENT_A) $(CLIENT_B)  $(SERVER)
 	
-clean_all: clean clean_templates
+clean-all: clean 
+	@- rm -f $(RPCGEN)
