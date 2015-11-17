@@ -7,7 +7,7 @@ cookie_prg_1(char *host)
 {
 	CLIENT *clnt;
 	int  *result_1;
-	args  getmemygookie_1_arg;
+	cookieargs  getmemygookie_1_arg;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, COOKIE_PRG, COOKIE_VER, "udp");
@@ -17,18 +17,20 @@ cookie_prg_1(char *host)
 	}
 #endif	/* DEBUG */
 
-	result_1 = getmemygookie_1(&getmemygookie_1_arg, clnt);
-	if (result_1 == (int *) NULL) {
-		clnt_perror (clnt, "call failed");
-	} else if (result_1 == (int *) -2){
-		printf("Judy: Mommy can you bake more cookies?\n");
-		fflush(0);
-	} else if (result_1 == (int *) -1){
-		printf("Judy: It's no fair that Tina gets to have two and I have to wait!\n");
-		fflush(0);
-	} else if (result_1 == (int *) 1){
-		printf("Judy: Thanks for the cookie Mommy!\n");
-		fflush(0);
+	while (result_1 != (int *) -2){
+		result_1 = getmemygookie_1(&getmemygookie_1_arg, clnt);
+		if (result_1 == (int *) NULL) {
+			clnt_perror (clnt, "call failed");
+		} else if (result_1 == (int *) -2){
+			printf("Judy: Mommy can you bake more cookies?\n");
+			fflush(0);
+		} else if (result_1 == (int *) -1){
+			printf("Judy: It's no fair that Tina gets to have two and I have to wait!\n");
+			fflush(0);
+		} else if (result_1 == (int *) 1){
+			printf("Judy: Thanks for the cookie Mommy!\n");
+			fflush(0);
+		}
 	}
 
 #ifndef	DEBUG
