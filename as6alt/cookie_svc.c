@@ -20,7 +20,7 @@ static void
 cookie_prg_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
-		cookieargs getmemygookie_1_arg;
+		cookieargs getmemycookie_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -31,10 +31,10 @@ cookie_prg_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		(void) svc_sendreply (transp, (xdrproc_t) xdr_void, (char *)NULL);
 		return;
 
-	case getmemygookie:
+	case getmemycookie:
 		_xdr_argument = (xdrproc_t) xdr_cookieargs;
 		_xdr_result = (xdrproc_t) xdr_int;
-		local = (char *(*)(char *, struct svc_req *)) getmemygookie_1_svc;
+		local = (char *(*)(char *, struct svc_req *)) getmemycookie_1_svc;
 		break;
 
 	default:

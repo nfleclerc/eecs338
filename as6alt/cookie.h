@@ -15,6 +15,7 @@ extern "C" {
 
 
 struct cookieargs {
+	int *tinacount;
 	char *name;
 };
 typedef struct cookieargs cookieargs;
@@ -23,15 +24,15 @@ typedef struct cookieargs cookieargs;
 #define COOKIE_VER 1
 
 #if defined(__STDC__) || defined(__cplusplus)
-#define getmemygookie 1
-extern  int * getmemygookie_1(cookieargs *, CLIENT *);
-extern  int * getmemygookie_1_svc(cookieargs *, struct svc_req *);
+#define getmemycookie 1
+extern  int * getmemycookie_1(cookieargs *, CLIENT *);
+extern  int * getmemycookie_1_svc(cookieargs *, struct svc_req *);
 extern int cookie_prg_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
-#define getmemygookie 1
-extern  int * getmemygookie_1();
-extern  int * getmemygookie_1_svc();
+#define getmemycookie 1
+extern  int * getmemycookie_1();
+extern  int * getmemycookie_1_svc();
 extern int cookie_prg_1_freeresult ();
 #endif /* K&R C */
 

@@ -2,11 +2,10 @@
 #include <rpc/rpc.h>
 #include "cookie.h"
 
-int cookiecount;
-int tinacount;
+int cookiecount = 20;
 
 int *
-getmemygookie_1_svc(cookieargs *argp, struct svc_req *rqstp)
+getmemycookie_1_svc(cookieargs *argp, struct svc_req *rqstp)
 {
 	static int  result;
 

@@ -10,6 +10,8 @@ xdr_cookieargs (XDR *xdrs, cookieargs *objp)
 {
 	register int32_t *buf;
 
+	 if (!xdr_pointer (xdrs, (char **)&objp->tinacount, sizeof (int), (xdrproc_t) xdr_int))
+		 return FALSE;
 	 if (!xdr_pointer (xdrs, (char **)&objp->name, sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
 	return TRUE;

@@ -10,12 +10,12 @@
 static struct timeval TIMEOUT = { 25, 0 };
 
 int *
-getmemygookie_1(cookieargs *argp, CLIENT *clnt)
+getmemycookie_1(cookieargs *argp, CLIENT *clnt)
 {
 	static int clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	if (clnt_call (clnt, getmemygookie,
+	if (clnt_call (clnt, getmemycookie,
 		(xdrproc_t) xdr_cookieargs, (caddr_t) argp,
 		(xdrproc_t) xdr_int, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {

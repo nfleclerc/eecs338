@@ -8,7 +8,7 @@ cookie_prg_1(char *host)
 {
 	CLIENT *clnt;
 	int  *result_1;
-	cookieargs  getmemygookie_1_arg;
+	cookieargs  getmemycookie_1_arg;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, COOKIE_PRG, COOKIE_VER, "udp");
@@ -19,7 +19,7 @@ cookie_prg_1(char *host)
 #endif	/* DEBUG */
 
 	while (result_1 != (int *) -2){
-		result_1 = getmemygookie_1(&getmemygookie_1_arg, clnt);
+		result_1 = getmemycookie_1(&getmemycookie_1_arg, clnt);
 		if (result_1 == (int *) NULL) {
 			clnt_perror (clnt, "call failed");
 		} else if (result_1 == (int *) -2){
