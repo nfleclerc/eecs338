@@ -17,6 +17,7 @@ cookie_prg_1(char *host)
 	}
 #endif	/* DEBUG */
 
+	getmemycookie_1_arg.name = "Tina";
 	while (result_1 != (int *) -2){
 		result_1 = getmemycookie_1(&getmemycookie_1_arg, clnt);
 		if (result_1 == (int *) NULL) {
@@ -26,7 +27,7 @@ cookie_prg_1(char *host)
 			fflush(0);
 		} else if(result_1 == (int *) 1){
 			printf("Tina: Thanks for the cookie Mommy!\n");
-			getmemycookie_1_arg->tinacount = getmemycookie_1_arg->tinacount + 1;
+			getmemycookie_1_arg.tinacount = getmemycookie_1_arg.tinacount + 1;
 			fflush(0);
 		}
 	}

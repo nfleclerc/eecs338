@@ -13,8 +13,8 @@ getmemycookie_1_svc(cookieargs *argp, struct svc_req *rqstp)
 		printf("Sorry kiddos no cookies left!");
 		fflush(0);
 		result = -2;
-	} else if (strcmp("Judy", argp->name) && tinacount < 2){
-		printf("Mom: Judy you can't have a cookie now, you need to wait for Tina to have %d more.\n", 2 - tinacount);
+	} else if (strcmp("Judy", argp->name) && argp->tinacount < (int *)2){
+		printf("Mom: Judy you can't have a cookie now, you need to wait for Tina to have %lu more.\n", (int *)2 - argp->tinacount);
 		fflush(0);
 		result = -1;
 	} else {
