@@ -1,30 +1,30 @@
-NAME := as6
-SERVER := mother.o
-CLIENTA := tina.o
-CLIENTB := judy.o
-RPC_SVC := cookie_xdr.c cookie_svc.c
-RPC_CLNT := cookie_clnt.c cookie_xdr.c
-CC := gcc
-ARGS := -Wall -g
-LIBS := -lnsl
+CC = gcc
+CFLAGS = -g -Wall
+TSOURCE = tina.c cookie_clnt.c cookie_xdr.c
+JSOURCE = judy.c cookie_clnt.c cookie_xdr.c
+SSOURCE = cookie_svc.c mother.c cookie_xdr.c
+RPCSRC = cookie.x
+RPCGEN = cookie.h cookie_clnt.c cookie_svc.c cookie_xdr.c
+CLIENT_A = tina
+CLIENT_B = judy
+SERVER = mother
+LIBS = -lnsl
 
-.PHONY: clean distclean
+all: $(CLIENT_A) $(CLIENT_B) $(SERVER)
 
-all: $(CLIENTA) $(CLIENTB) $(SERVER)
+tina: $(TSOURCE) $(RPCGEN)
+	$(CC) $(LIBS) $(CFLAGS) -o $(CLIENT_A) $(TSOURCE) $(LIBS)
 
-$(CLIENTA):
-	$(CC) $(ARGS) tina.c $(RPC_CLNT) -o $(CLIENTA) $(LIBS) 
+judy: $(JSOURCE) $(RPCGEN)
+	$(CC) $(LIBS) $(CFLAGS) -o $(CLIENT_B) $(JSOURCE) $(LIBS)
 
-$(CLIENTB):
-	$(CC) $(ARGS) judy.c $(RPC_CLNT) -o $(CLIENTB) $(LIBS) 
+mother: $(SSOURCE) $(RPCGEN)
+	$(CC) $(LIBS) $(CFLAGS) -o $(SERVER) $(SSOURCE) $(LIBS)
 
-$(SERVER):
-	$(CC) $(ARGS) mother.c $(RPC_SVC) -o $(SERVER) $(LIBS) 
-
+$(RPCGEN): $(RPCSRC)
+	rpcgen $(RPCSRC)
 clean:
-	@- $(RM) -f $(SERVER) $(CLIENTS) 
-
-clean-rpc:
-	@- $(RM) -f  $(RPC_CLNT) $(RPC_SVC)
-
-distclean: clean
+	@- rm -f $(CLIENT_A) $(CLIENT_B)  $(SERVER)
+	
+clean-all: clean 
+	@- rm -f $(RPCGEN)

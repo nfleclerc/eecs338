@@ -1,79 +1,57 @@
+#include "cookie.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include "common.h"
-#include "cookie.h"
 
-void rpc_getmemycookie(char *host){
-	
+
+void
+cookie_prg_1(char *host)
+{
 	CLIENT *clnt;
-	int *result;
-	
+	int  *result_1;
+	cookieargs  getmemycookie_1_arg;
+
+#ifndef	DEBUG
 	clnt = clnt_create (host, COOKIE_PRG, COOKIE_VER, "udp");
 	if (clnt == NULL) {
-		clnt_pcreateerror(host);
-		exit(EXIT_FAILURE);
+		clnt_pcreateerror (host);
+		exit (EXIT_FAILURE);
 	}
+#endif	/* DEBUG */
 
-	args *arg;
-	arg = (args *) malloc(sizeof(args));
-	arg->name = "Judy";
+	getmemycookie_1_arg.name = "Judy";
+	do {
+		result_1 = getmemycookie_1(&getmemycookie_1_arg, clnt);
+		if (result_1 == (int *) NULL) {
+			clnt_perror (clnt, "call failed");
+		} else if (result_1 == (int *) -2){
+			printf("Judy: Mommy can you bake more cookies?\n");
+			fflush(0);
+		} else if (result_1 == (int *) -1){
+			printf("Judy: It's no fair that Tina gets to have two and I have to wait!\n");
+			fflush(0);
+		} else if (result_1 == (int *) 1){
+			getmemycookie_1_arg.tinacount = 0;
+			printf("Judy: Thanks for the cookie Mommy!\n");
+			fflush(0);
+		} 
+	} while (result_1 != (int *) -2);
 
-	result = getmemycookie_1(arg, clnt);
-	if (result == (int *)NULL){
-		clnt_perror(clnt, "call failed");
-	}
-
-	clnt_destroy(clnt);
-
+#ifndef	DEBUG
+	clnt_destroy (clnt);
+#endif	 /* DEBUG */
 }
 
 
+int
+main (int argc, char *argv[])
+{
+	char *host;
 
-void judy(void *shared_data){
-	struct shared_data_info *shared = (struct shared_data_info *)shared_data;
-	
-	while (shared->cookiecount != 0){
-		
-		if (sem_wait(shared->mutex) == -1){
-			perror("wait(mutex)");
-			exit(EXIT_SUCCESS);
-		}
-		
-		if (shared->tinacount < (int *)2){
-			
-			if (sem_wait(shared->cookie) == -1){
-			perror("wait(cookie)");
-			exit(EXIT_SUCCESS);
-			}
-			
-		}
-		
-		// critical section start
-		
-
-		shared->cookiecount = shared->cookiecount - 1;
-		shared->tinacount = 0;
-		
-		//critical section end
-		
-		if (shared->tinacount >= (int *)2){
-			
-			if (sem_post(shared->cookie) == -1){
-			perror("signal(cookie)");
-			exit(EXIT_SUCCESS);
-			}
-			
-		}
-		
-		if (sem_post(shared->mutex) == -1){
-			perror("signal(mutex)");
-			exit(EXIT_SUCCESS);
-		}
+	if (argc < 2) {
+		printf ("usage: %s server_host\n", argv[0]);
+		exit (1);
 	}
-	
-	exit(EXIT_SUCCESS);
+	host = argv[1];
+	cookie_prg_1 (host);
+	exit (EXIT_SUCCESS);
 }

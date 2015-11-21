@@ -1,22 +1,28 @@
+#include <stdio.h>
 #include <rpc/rpc.h>
 #include "cookie.h"
 
+int cookiecount = 20;
 
 int *
-getmemycookie_1_svc(args *argp, struct svc_req *rqstp) {
+getmemycookie_1_svc(cookieargs *argp, struct svc_req *rqstp)
+{
+	static int  result;
 
-	static int *result;
-
-	printf("%s is requesting a cookie\n", argp->name);
-
-	if (argp->cookiecount == 0){
-		result = (int *)-2;
-	} else if (strcmp(argp->name, "Judy")){
-		result = (int *)-1;
+	if (cookiecount == 0){
+		printf("Sorry kiddos no cookies left!");
+		fflush(0);
+		result = -2;
+	} else if (strcmp("Judy", argp->name) && argp->tinacount < (int *)2){
+		printf("Mom: Judy you can't have a cookie now, you need to wait for Tina to have %lu more.\n", (int *)2 - argp->tinacount);
+		fflush(0);
+		result = -1;
 	} else {
-		result = (int *)1;
+		cookiecount--;
+		printf("Mom: There are %d cookies left.\n", cookiecount);
+		fflush(0);
+		result = 1;
 	}
 
 	return &result;
-
 }
