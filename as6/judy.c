@@ -1,26 +1,24 @@
 #include "cookie.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <unistd.h>
 
 void
 cookie_prg_1(char *host)
 {
 	CLIENT *clnt;
 	int  *result_1;
-	cookieargs  getmemycookie_1_arg;
+	char * name = "Judy";
 
-#ifndef	DEBUG
 	clnt = clnt_create (host, COOKIE_PRG, COOKIE_VER, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror (host);
 		exit (EXIT_FAILURE);
 	}
-#endif	/* DEBUG */
 
-	getmemycookie_1_arg.name = "Judy";
 	do {
-		result_1 = getmemycookie_1(&getmemycookie_1_arg, clnt);
+		sleep(1);
+		result_1 = getmemycookie_1(&name, clnt);
 		if (result_1 == (int *) NULL) {
 			clnt_perror (clnt, "call failed");
 		} else if (result_1 == (int *) -2){
@@ -30,15 +28,12 @@ cookie_prg_1(char *host)
 			printf("Judy: It's no fair that Tina gets to have two and I have to wait!\n");
 			fflush(0);
 		} else if (result_1 == (int *) 1){
-			getmemycookie_1_arg.tinacount = 0;
 			printf("Judy: Thanks for the cookie Mommy!\n");
 			fflush(0);
 		} 
 	} while (result_1 != (int *) -2);
 
-#ifndef	DEBUG
 	clnt_destroy (clnt);
-#endif	 /* DEBUG */
 }
 
 

@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS = -g -Wall
-TSOURCE = tina.c cookie_clnt.c cookie_xdr.c
-JSOURCE = judy.c cookie_clnt.c cookie_xdr.c
-SSOURCE = cookie_svc.c mother.c cookie_xdr.c
+TSOURCE = tina.c cookie_clnt.c #cookie_xdr.c
+JSOURCE = judy.c cookie_clnt.c #cookie_xdr.c
+SSOURCE = cookie_svc.c mother.c #cookie_xdr.c
 RPCSRC = cookie.x
-RPCGEN = cookie.h cookie_clnt.c cookie_svc.c cookie_xdr.c
+RPCGEN = cookie.h cookie_clnt.c cookie_svc.c #cookie_xdr.c
 CLIENT_A = tina
 CLIENT_B = judy
 SERVER = mother
