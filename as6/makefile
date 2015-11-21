@@ -13,13 +13,13 @@ LIBS = -lnsl
 all: $(CLIENT_A) $(CLIENT_B) $(SERVER)
 
 tina: $(TSOURCE) $(RPCGEN)
-	$(CC) $(LIBS) $(CFLAGS) -o $(CLIENT_A) $(TSOURCE) $(LIBS)
+	$(CC) $(CFLAGS) -o $(CLIENT_A) $(TSOURCE) $(LIBS)
 
 judy: $(JSOURCE) $(RPCGEN)
-	$(CC) $(LIBS) $(CFLAGS) -o $(CLIENT_B) $(JSOURCE) $(LIBS)
+	$(CC) $(CFLAGS) -o $(CLIENT_B) $(JSOURCE) $(LIBS)
 
 mother: $(SSOURCE) $(RPCGEN)
-	$(CC) $(LIBS) $(CFLAGS) -o $(SERVER) $(SSOURCE) $(LIBS)
+	$(CC) $(CFLAGS) -o $(SERVER) $(SSOURCE) $(LIBS)
 
 $(RPCGEN): $(RPCSRC)
 	rpcgen $(RPCSRC)

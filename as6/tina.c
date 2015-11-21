@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <time.h>
 
 void
 cookie_prg_1(char *host)
@@ -16,20 +17,30 @@ cookie_prg_1(char *host)
 		exit(EXIT_FAILURE);
 	}
 
+	time_t rawtime;
+  	struct tm * timeinfo;
+	char hostname[1024];
+	hostname[1023] = '\0';
 
 	do {
 		sleep(1);
 		result_1 = getmemycookie_1(&name, clnt);
 		if (result_1 == (int *) NULL) {
 			clnt_perror (clnt, "call failed");
-		} else if(result_1 == (int *) -2){
+		} else if(*result_1 == -2){
 			printf("Tina: Mommy why are there no cookies left?\n");
+  			time (&rawtime);
+  			timeinfo = localtime (&rawtime);
+  			printf ( "Tina: %i %s\n", gethostname(hostname, 1023), asctime(timeinfo));
 			fflush(0);
-		} else if(result_1 == (int *) 1){
+		} else if(*result_1 == 1){
 			printf("Tina: Thanks for the cookie Mommy!\n");
+  			time (&rawtime);
+  			timeinfo = localtime (&rawtime);
+  			printf ( "Tina: %i %s\n", gethostname(hostname, 1023), asctime(timeinfo));
 			fflush(0);
 		}
-	} while (result_1 != (int *) -2);
+	} while (*result_1 != -2);
 
 	clnt_destroy (clnt);
 }

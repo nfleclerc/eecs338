@@ -1,0 +1,131 @@
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 2 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:08 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 2 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:10 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 2 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:12 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 2 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:14 2015
+
+Mom: There are 19 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:15 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:16 2015
+
+Mom: There are 18 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:17 2015
+
+Mom: There are 17 cookies left.
+Judy: Thanks for the cookie Mommy!
+Judy: 0 Fri Nov 20 23:49:18 2015
+
+Mom: There are 16 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:19 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:20 2015
+
+Mom: There are 15 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:21 2015
+
+Mom: There are 14 cookies left.
+Judy: Thanks for the cookie Mommy!
+Judy: 0 Fri Nov 20 23:49:22 2015
+
+Mom: There are 13 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:23 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:24 2015
+
+Mom: There are 12 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:25 2015
+
+Mom: There are 11 cookies left.
+Judy: Thanks for the cookie Mommy!
+Judy: 0 Fri Nov 20 23:49:26 2015
+
+Mom: There are 10 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:27 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:28 2015
+
+Mom: There are 9 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:29 2015
+
+Mom: There are 8 cookies left.
+Judy: Thanks for the cookie Mommy!
+Judy: 0 Fri Nov 20 23:49:30 2015
+
+Mom: There are 7 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:31 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:32 2015
+
+Mom: There are 6 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:33 2015
+
+Mom: There are 5 cookies left.
+Judy: Thanks for the cookie Mommy!
+Judy: 0 Fri Nov 20 23:49:34 2015
+
+Mom: There are 4 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:35 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:36 2015
+
+Mom: There are 3 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:37 2015
+
+Mom: There are 2 cookies left.
+Judy: Thanks for the cookie Mommy!
+Judy: 0 Fri Nov 20 23:49:38 2015
+
+Mom: There are 1 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:39 2015
+
+Mom: Judy you can't have a cookie now, you need to wait for Tina to have 1 more.
+Judy: It's no fair that Tina gets to have two and I have to wait!
+Judy: 0 Fri Nov 20 23:49:40 2015
+
+Mom: There are 0 cookies left.
+Tina: Thanks for the cookie Mommy!
+Tina: 0 Fri Nov 20 23:49:41 2015
+
+Mom: Sorry kiddos no cookies left!
+Judy: Mommy can you bake more cookies?
+Judy: 0 Fri Nov 20 23:49:42 2015
+
+Mom: Sorry kiddos no cookies left!
+Tina: Mommy why are there no cookies left?
+Tina: 0 Fri Nov 20 23:49:43 2015
